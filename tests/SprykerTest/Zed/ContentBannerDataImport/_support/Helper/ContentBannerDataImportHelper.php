@@ -13,9 +13,6 @@ use Orm\Zed\Content\Persistence\SpyContentQuery;
 
 class ContentBannerDataImportHelper extends Module
 {
-    /**
-     * @return void
-     */
     public function ensureDatabaseTableIsEmpty(): void
     {
         $contentLocalizedQuery = $this->getContentLocalizedQuery();
@@ -24,13 +21,6 @@ class ContentBannerDataImportHelper extends Module
         $contentQuery->deleteAll();
     }
 
-    /**
-     * @param int $locale
-     * @param string $parameter
-     * @param string $value
-     *
-     * @return void
-     */
     public function assertContentLocalizedParameterHasValue(int $locale, string $parameter, string $value): void
     {
         $contentLocalized = $this->getContentLocalizedQuery()->findOneByFkLocale($locale);
@@ -39,11 +29,6 @@ class ContentBannerDataImportHelper extends Module
         $this->assertEquals($parameters[$parameter], $value);
     }
 
-    /**
-     * @param int $locale
-     *
-     * @return void
-     */
     public function assertContentLocalizedDoesNotExist(int $locale): void
     {
         $contentLocalized = $this->getContentLocalizedQuery()->findOneByFkLocale($locale);
@@ -51,26 +36,17 @@ class ContentBannerDataImportHelper extends Module
         $this->assertNull($contentLocalized);
     }
 
-    /**
-     * @return void
-     */
     public function assertDatabaseTableContainsData(): void
     {
         $contentQuery = $this->getContentQuery();
         $this->assertTrue($contentQuery->exists(), 'Expected at least one entry in the database table but database table is empty.');
     }
 
-    /**
-     * @return \Orm\Zed\Content\Persistence\SpyContentQuery
-     */
     protected function getContentQuery(): SpyContentQuery
     {
         return SpyContentQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Content\Persistence\SpyContentLocalizedQuery
-     */
     protected function getContentLocalizedQuery(): SpyContentLocalizedQuery
     {
         return SpyContentLocalizedQuery::create();

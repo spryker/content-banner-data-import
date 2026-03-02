@@ -32,9 +32,6 @@ class ContentBannerDataImportPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testImporterPopulatesTables(): void
     {
         // Arrange
@@ -55,9 +52,6 @@ class ContentBannerDataImportPluginTest extends Unit
         $this->tester->assertDatabaseTableContainsData();
     }
 
-    /**
-     * @return void
-     */
     public function testImportWithInvalidDefaultLocaleDataThrowsException(): void
     {
         // Arrange
@@ -77,9 +71,6 @@ class ContentBannerDataImportPluginTest extends Unit
         (new ContentBannerDataImportPlugin())->import($dataImportConfigurationTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testImportWithMissingPropertyThrowsException(): void
     {
         // Arrange
@@ -99,9 +90,6 @@ class ContentBannerDataImportPluginTest extends Unit
         (new ContentBannerDataImportPlugin())->import($dataImportConfigurationTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateLocale(): void
     {
         // Arrange
@@ -125,9 +113,6 @@ class ContentBannerDataImportPluginTest extends Unit
         $this->tester->assertContentLocalizedParameterHasValue(46, 'alt_text', 'updated banner image 1');
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateLocaleFromDefault(): void
     {
         // Arrange
@@ -151,9 +136,6 @@ class ContentBannerDataImportPluginTest extends Unit
         $this->tester->assertContentLocalizedParameterHasValue(46, 'alt_text', 'de banner image 1');
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateLocaleToDefault(): void
     {
         // Arrange

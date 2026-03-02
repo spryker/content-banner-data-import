@@ -26,9 +26,6 @@ use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
  */
 class ContentBannerDataImportBusinessFactory extends DataImportBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
-     */
     public function getContentBannerDataImport(): DataImporterInterface
     {
         $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getContentBannerDataImporterConfiguration());
@@ -45,57 +42,36 @@ class ContentBannerDataImportBusinessFactory extends DataImportBusinessFactory
         return $dataImporter;
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createPrepareLocalizedContentBannerTermStep(): DataImportStepInterface
     {
         return new PrepareLocalizedContentBannerTermStep();
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createCheckLocalizedContentBannerTermStep(): DataImportStepInterface
     {
         return new CheckLocalizedContentBannerTermStep($this->getContentBannerFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createContentBannerWriterStep(): DataImportStepInterface
     {
         return new ContentBannerWriterStep($this->getUtilEncoding());
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createCheckContentDataStep(): DataImportStepInterface
     {
         return new CheckContentDataStep($this->getContentFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\ContentBannerDataImport\Dependency\Facade\ContentBannerDataImportToContentBannerInterface
-     */
     public function getContentBannerFacade(): ContentBannerDataImportToContentBannerInterface
     {
         return $this->getProvidedDependency(ContentBannerDataImportDependencyProvider::FACADE_CONTENT_BANNER);
     }
 
-    /**
-     * @return \Spryker\Zed\ContentBannerDataImport\Dependency\Facade\ContentBannerDataImportToContentInterface
-     */
     public function getContentFacade(): ContentBannerDataImportToContentInterface
     {
         return $this->getProvidedDependency(ContentBannerDataImportDependencyProvider::FACADE_CONTENT);
     }
 
-    /**
-     * @return \Spryker\Zed\ContentBannerDataImport\Dependency\Service\ContentBannerDataImportToUtilEncodingInterface
-     */
     public function getUtilEncoding(): ContentBannerDataImportToUtilEncodingInterface
     {
         return $this->getProvidedDependency(ContentBannerDataImportDependencyProvider::SERVICE_UTIL_ENCODING);

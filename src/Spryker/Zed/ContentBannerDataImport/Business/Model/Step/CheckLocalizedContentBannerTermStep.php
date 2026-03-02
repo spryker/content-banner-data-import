@@ -26,9 +26,6 @@ class CheckLocalizedContentBannerTermStep implements DataImportStepInterface
      */
     protected const ERROR_MESSAGE = 'Failed to import locale id [%s]: %s';
 
-    /**
-     * @param \Spryker\Zed\ContentBannerDataImport\Dependency\Facade\ContentBannerDataImportToContentBannerInterface $contentBanner
-     */
     public function __construct(ContentBannerDataImportToContentBannerInterface $contentBanner)
     {
         $this->contentBanner = $contentBanner;

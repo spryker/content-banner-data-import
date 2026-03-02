@@ -26,19 +26,11 @@ class ContentBannerWriterStep extends PublishAwareStep implements DataImportStep
      */
     protected $utilEncoding;
 
-    /**
-     * @param \Spryker\Zed\ContentBannerDataImport\Dependency\Service\ContentBannerDataImportToUtilEncodingInterface $utilEncoding
-     */
     public function __construct(ContentBannerDataImportToUtilEncodingInterface $utilEncoding)
     {
         $this->utilEncoding = $utilEncoding;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $contentBannerEntity = $this->saveContentBanner($dataSet);
@@ -54,11 +46,6 @@ class ContentBannerWriterStep extends PublishAwareStep implements DataImportStep
         );
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Orm\Zed\Content\Persistence\SpyContent
-     */
     protected function saveContentBanner(DataSetInterface $dataSet): SpyContent
     {
         $contentBannerEntity = SpyContentQuery::create()
@@ -74,12 +61,6 @@ class ContentBannerWriterStep extends PublishAwareStep implements DataImportStep
         return $contentBannerEntity;
     }
 
-    /**
-     * @param array $localizedBannerTerms
-     * @param int $idContentBannerTerm
-     *
-     * @return void
-     */
     protected function saveContentLocalizedBannerTerms(array $localizedBannerTerms, int $idContentBannerTerm): void
     {
         /** @var \Propel\Runtime\Collection\ObjectCollection $contentLocalizedCollection */
@@ -105,11 +86,6 @@ class ContentBannerWriterStep extends PublishAwareStep implements DataImportStep
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ContentBannerTermTransfer $contentBannerTermTransfer
-     *
-     * @return string|null
-     */
     protected function getEncodedParameters(ContentBannerTermTransfer $contentBannerTermTransfer): ?string
     {
         return $this->utilEncoding->encodeJson($contentBannerTermTransfer->toArray());

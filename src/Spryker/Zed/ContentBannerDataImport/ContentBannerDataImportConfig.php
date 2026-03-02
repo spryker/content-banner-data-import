@@ -34,9 +34,6 @@ class ContentBannerDataImportConfig extends DataImportConfig
         return $this->buildImporterConfiguration($moduleDataImportDirectory . static::IMPORT_FILE_NAME, static::IMPORT_TYPE_CONTENT_BANNER);
     }
 
-    /**
-     * @return string
-     */
     protected function getModuleRoot(): string
     {
         $moduleRoot = realpath(

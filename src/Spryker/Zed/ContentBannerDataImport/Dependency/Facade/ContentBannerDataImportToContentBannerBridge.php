@@ -25,11 +25,6 @@ class ContentBannerDataImportToContentBannerBridge implements ContentBannerDataI
         $this->contentBannerFacade = $contentBannerFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ContentBannerTermTransfer $contentBannerTermTransfer
-     *
-     * @return \Generated\Shared\Transfer\ContentValidationResponseTransfer
-     */
     public function validateContentBannerTerm(
         ContentBannerTermTransfer $contentBannerTermTransfer
     ): ContentValidationResponseTransfer {

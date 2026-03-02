@@ -26,9 +26,6 @@ class CheckContentDataStep implements DataImportStepInterface
      */
     protected $contentFacade;
 
-    /**
-     * @param \Spryker\Zed\ContentBannerDataImport\Dependency\Facade\ContentBannerDataImportToContentInterface $contentFacade
-     */
     public function __construct(ContentBannerDataImportToContentInterface $contentFacade)
     {
         $this->contentFacade = $contentFacade;
